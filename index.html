@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Marketing CBT Examination</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ WELCOME SCREEN ============ -->
+  <section id="welcome-screen" class="screen active">
+    <div class="welcome-card">
+      <div class="logo-circle">📚</div>
+      <h1>Book Marketing</h1>
+      <p class="subtitle">Computer-Based Test (CBT)</p>
+
+      <div class="info-grid">
+        <div class="info-item"><strong>30</strong><span>Questions</span></div>
+        <div class="info-item"><strong>15</strong><span>Minutes</span></div>
+        <div class="info-item"><strong>30</strong><span>Total Marks</span></div>
+        <div class="info-item"><strong>60%</strong><span>Pass Mark</span></div>
+      </div>
+
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <ul>
+          <li>Choose the most appropriate answer for each question.</li>
+          <li>Each question carries 1 mark and has only one correct answer.</li>
+          <li>The timer starts as soon as you click <b>Start Examination</b>.</li>
+          <li>Use the question numbers on the panel to move between questions.</li>
+          <li>The exam is submitted automatically when time runs out.</li>
+          <li>Refreshing the page will not restart your timer or erase your answers.</li>
+        </ul>
+      </div>
+
+      <form id="start-form" autocomplete="off">
+        <label for="student-name">Enter your full name</label>
+        <input type="text" id="student-name" placeholder="e.g. Amina Yusuf" maxlength="60" required />
+        <p id="name-error" class="error" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-large">Start Examination</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ EXAM SCREEN ============ -->
+  <section id="exam-screen" class="screen">
+    <header class="exam-header">
+      <div class="exam-title">
+        <h2>Book Marketing CBT</h2>
+        <span id="candidate-name"></span>
+      </div>
+      <div class="timer-box" id="timer-box" aria-live="off">
+        <span class="timer-label">Time Left</span>
+        <span id="timer">15:00</span>
+      </div>
+    </header>
+
+    <main class="exam-layout">
+      <div class="question-panel">
+        <div class="progress-row">
+          <span id="question-counter">Question 1 of 30</span>
+          <span id="answered-counter">Answered: 0/30</span>
+        </div>
+        <div class="progress-bar"><div id="progress-fill"></div></div>
+
+        <h3 id="question-text" class="question-text"></h3>
+        <div id="options" class="options" role="radiogroup"></div>
+
+        <div class="nav-buttons">
+          <button id="prev-btn" class="btn btn-secondary">← Previous</button>
+          <button id="clear-btn" class="btn btn-ghost">Clear Answer</button>
+          <button id="next-btn" class="btn btn-secondary">Next →</button>
+        </div>
+      </div>
+
+      <aside class="navigator-panel">
+        <h4>Question Navigator</h4>
+        <div id="navigator" class="navigator"></div>
+        <div class="legend">
+          <span><i class="dot dot-answered"></i> Answered</span>
+          <span><i class="dot dot-unanswered"></i> Unanswered</span>
+          <span><i class="dot dot-current"></i> Current</span>
+        </div>
+        <button id="submit-btn" class="btn btn-danger btn-block">Submit Examination</button>
+      </aside>
+    </main>
+  </section>
+
+  <!-- ============ RESULT SCREEN ============ -->
+  <section id="result-screen" class="screen">
+    <div class="result-wrapper">
+      <div class="result-card">
+        <div id="result-banner" class="result-banner"></div>
+        <h1>Examination Result</h1>
+        <p id="time-up-note" class="time-up-note hidden">⏰ Time was up. Your exam was submitted automatically.</p>
+
+        <div class="result-details">
+          <div><span>Candidate</span><strong id="res-name"></strong></div>
+          <div><span>Examination</span><strong>Book Marketing</strong></div>
+          <div><span>Score</span><strong id="res-score"></strong></div>
+          <div><span>Percentage</span><strong id="res-percent"></strong></div>
+          <div><span>Status</span><strong id="res-status"></strong></div>
+        </div>
+
+        <div class="result-actions">
+          <button id="toggle-review" class="btn btn-secondary">Show Review</button>
+          <button id="retake-btn" class="btn btn-primary">Take Exam Again</button>
+        </div>
+      </div>
+
+      <div id="review" class="review hidden"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONFIRM MODAL ============ -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <h3 id="modal-title">Submit Examination?</h3>
+      <p id="modal-text"></p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn btn-secondary">Go Back</button>
+        <button id="modal-confirm" class="btn btn-danger">Yes, Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
